@@ -20,7 +20,8 @@ public class RPN{
 					stack.push(stack.pop() * stack.pop());
 					break;
 				case "/":
-					stack.push(stack.pop() / stack.pop());
+					Double denom = stack.pop();
+					stack.push(stack.pop() / denom);
 					break;
 				case "=":
 					System.out.println("\nResult: " + stack.pop());
