@@ -23,7 +23,7 @@ public class RPN{
 					stack.push(stack.pop() / stack.pop());
 					break;
 				case "=":
-					System.out.println("Result: " + stack.pop());
+					System.out.println("\nResult: " + stack.pop());
 					break;
 				case "q":
 					System.exit(0);
@@ -39,10 +39,10 @@ public class RPN{
 		String input;
 		Scanner keyboard = new Scanner(System.in);
 		
-		System.out.println("Write \"q\" to quit");
+		System.out.println("\nWrite \"q\" to quit");
 		
 		while(true){
-			System.out.println("Write an RPN expression: ");
+			System.out.println("\nWrite an RPN expression: ");
 			evaluateRPN(keyboard.nextLine());
 		}
     }
