@@ -5,7 +5,7 @@ public class Stack{
 	
 	int upperLimit = 5;
 	int lastPosition;
-	double arr[] = new double[upperLimit];
+	private double arr[] = new double[upperLimit];
 	
 	//constructor
 	public Stack(){
