@@ -62,25 +62,26 @@ public class BinarySearchTree {
 	/**
 	 * find: Find a course given a course code
 	 */
-	public BSTNode find(String courseCode) {
-		private BTSNode findRoot = root;
-		
-	    if (root==null) {
-			System.out.println("Database is empty");
-			return null; 
-		} else {
-			if (root.getCourseCode().compareTo(courseCode) > 0) { // left string "before" right string
-				root = root.getLeftChild();
-				root = find(courseCode);
-			} else if (root.getCourseCode().compareTo(courseCode) < 0) { // left string "after" right string
-				root = root.getRightChild();
-				root = find(courseCode);
+	 
+	 public BSTNode recursiveFind(String courseCode, BSTNode newRoot){
+			if (newRoot==null) {
+				System.out.println("Not in database");
+				return null; 
+			} else {
+				if (newRoot.getCourseCode().compareTo(courseCode) > 0) { 
+					newRoot = newRoot.getLeftChild();
+					newRoot = recursiveFind(courseCode, newRoot);
+				} else if (newRoot.getCourseCode().compareTo(courseCode) < 0) { 
+					newRoot = newRoot.getRightChild();
+					newRoot = recursiveFind(courseCode, newRoot);
+				}
+				return newRoot;
 			}
-			
-			return root;
 		}
-	    
-	    
+	 
+	 
+	public BSTNode find(String courseCode) {
+		return recursiveFind(courseCode, root);
 	}
 	
 	
