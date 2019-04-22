@@ -81,19 +81,22 @@ public class BinarySearchTree {
 	 
 	 
 	 //HELP FUNCTION FOR FIND
-	 public BSTNode recursiveFind(String courseCode, BSTNode newRoot){
-			if (newRoot==null) {
-				//System.out.println("Not in database");
+	 private BSTNode recursiveFind(String courseCode, BSTNode root){
+			BSTNode newRoot = null;
+			
+			if (root==null) {
 				return null; 
+				
 			} else {
-				if (newRoot.getCourseCode().compareTo(courseCode) > 0) { 
-					newRoot = newRoot.getLeftChild();
-					newRoot = recursiveFind(courseCode, newRoot);
-				} else if (newRoot.getCourseCode().compareTo(courseCode) < 0) { 
-					newRoot = newRoot.getRightChild();
-					newRoot = recursiveFind(courseCode, newRoot);
+				if (root.getCourseCode().compareTo(courseCode) > 0) { 
+					newRoot = root.getLeftChild();
+					return recursiveFind(courseCode, newRoot);
+				} else if (root.getCourseCode().compareTo(courseCode) < 0) { 
+					newRoot = root.getRightChild();
+					return recursiveFind(courseCode, newRoot);
+				}else{
+					return root;
 				}
-				return newRoot;
 			}
 		}
 	 
@@ -103,6 +106,7 @@ public class BinarySearchTree {
 			return possibleNode;
 		}else{
 			//System.out.println("Not in database");
+			//try catch
 			throw new NullPointerException("Not in database");
 		}
 	}
@@ -142,7 +146,7 @@ public class BinarySearchTree {
 				root.courseName = minNodeForRight.getCourseName();
 				root.credits = minNodeForRight.getCredits();
 				// Deleting minimum node from right now
-				removeNode(root.getRightChild(), minNodeForRight.getCourseCode());
+				root.setChildren(root.getLeftChild(),removeNode(root.getRightChild(), minNodeForRight.getCourseCode()));
  
 			}
 			// if nodeToBeDeleted has only left child
