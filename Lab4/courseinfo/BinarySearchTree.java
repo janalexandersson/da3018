@@ -114,7 +114,11 @@ public class BinarySearchTree {
 	
 	
 	
-	
+	/**
+	 * 
+	 * Remove a course given a course code
+	 * 
+	 */
 	
 	private BSTNode findSmallestElem(BSTNode root) {
 		if (root.getLeftChild() == null)
@@ -123,7 +127,6 @@ public class BinarySearchTree {
 			return findSmallestElem(root.getLeftChild());
 		}
 	}	
-	
 	
 	
 	private BSTNode removeNode(BSTNode root, String courseCode) {
@@ -136,28 +139,28 @@ public class BinarySearchTree {
 			root.setChildren(root.getLeftChild(), removeNode(root.getRightChild(), courseCode));
 			
 		} else {
-			// if nodeToBeDeleted have both children
+			// The case where the node we want removed has both children
 			if (root.getLeftChild() != null && root.getRightChild() != null) {
 				BSTNode temp = root;
-				// Finding minimum element from right
+				// Finding smallest element node from right
 				BSTNode minNodeForRight = findSmallestElem(temp.getRightChild());
-				// Replacing current node with minimum node from right subtree
+				// Replacing current node with smallest element node from right subtree
 				root.courseCode = minNodeForRight.getCourseCode();
 				root.courseName = minNodeForRight.getCourseName();
 				root.credits = minNodeForRight.getCredits();
-				// Deleting minimum node from right now
+				// Deleting smallest element node from right
 				root.setChildren(root.getLeftChild(),removeNode(root.getRightChild(), minNodeForRight.getCourseCode()));
  
 			}
-			// if nodeToBeDeleted has only left child
+			// The case where the node we want removed has only left child
 			else if (root.getLeftChild() != null) {
 				root = root.getLeftChild();
 			}
-			// if nodeToBeDeleted has only right child
+			// The case where the node we want removed has only left child
 			else if (root.getRightChild() != null) {
 				root = root.getRightChild();
 			}
-			// if nodeToBeDeleted do not have child (Leaf node)
+			// The case where the node we want removed is a leaf
 			else
 				root = null;
 		}
