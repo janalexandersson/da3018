@@ -2,6 +2,10 @@
 
 package courseinfo;
 
+
+import java.util.NoSuchElementException;
+import java.util.Iterator;
+
 public class CourseInfo {
 
 	public static void main(String[] args) {
@@ -23,11 +27,33 @@ public class CourseInfo {
 		System.out.println(courses.find("4").getRightChild().getCourseName());
 		System.out.println(courses.find("4").getLeftChild().getCourseName());
 		
-		courses.remove("4");
+		courses.remove("1");
 		
 		//System.out.println(courses.find("5").getRightChild().getCourseName());
 		
 		System.out.println(courses.size());
+		
+		
+		
+		
+		
+		for (BinarySearchTree.BSTNode node: courses) {
+			System.out.println(node.getCourseCode());
+		}
+		
+		
+		
+		// Use iterator to display contents of al
+     // System.out.print("Original contents of al: ");
+     // Iterator itr = courses.iterator();
+      
+      
+      /**
+      while(itr.hasNext()) {
+         Object element = itr.next();
+         System.out.print(element.getCourseCode() + "\n");
+      }
+
 		
 		/**
 		System.out.println(courses.find("5").getLeftChild().getCourseName());

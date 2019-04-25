@@ -1,13 +1,20 @@
 //BinarySearhTree
 
+
 package courseinfo;
+
+
+import java.util.NoSuchElementException;
+import java.util.Iterator;
+import java.util.Stack;
 
 /**
  * Store course information in a binary search tree
  * 
  */
-public class BinarySearchTree {
-	BSTNode root=null;
+public class BinarySearchTree implements Iterable<BinarySearchTree.BSTNode> {
+
+	BSTNode root = null;
 	
 	public BinarySearchTree() {
 		// Empty constructor?
@@ -104,7 +111,7 @@ public class BinarySearchTree {
 		BSTNode possibleNode = recursiveFind(courseCode, root);
 		if ( possibleNode != null){
 			return possibleNode;
-		}else{
+		} else{
 			//System.out.println("Not in database");
 			//try catch
 			throw new NullPointerException("Not in database");
@@ -170,6 +177,80 @@ public class BinarySearchTree {
 	public void remove(String courseCode) {
 		root = removeNode(root, courseCode);
 	}
+	
+	
+	/**
+	 * Iterable
+	 *
+	 * 
+	 */
+	 
+	 public Iterator<BinarySearchTree.BSTNode> iterator() {
+	 	return new BSTIterator(root);
+	 }
+	
+	
+	private class BSTIterator implements Iterator<BinarySearchTree.BSTNode> {
+	
+		//private BSTNode root;
+		//private BSTNode current;
+		
+		private Stack<BSTNode> branch;
+		
+		public BSTIterator(BSTNode root) {
+			branch = new Stack<BSTNode>();
+			branch.push(root);
+		}
+
+		public boolean hasNext() {
+			return !branch.isEmpty();
+		}
+		
+		//IGNORE!!!!
+		//Vi besöker vänster först
+		//Om current har en vänster, pusha current på stacken och ny current blir current.left
+		//Om current inte har en vänster, kolla stackens top (parent) om den har en höger, sätter current till current.right och poppa top
+		//Vi kan då inte besöka den igen och ta om högersvängen.
+		//detta innebär att allas vänster i hela stacken blivit besökta
+		//Vi forstätter nu med höger subträd och gör samma sak. När vi besökt hela det trädet kommer vi sedan tillbaka till tidigare top:s parent och kollar om den har en höger osv
+		//IGNORE
+		
+		
+		//Besöker vänster först för att jag pushar höger först
+		//print left first
+		//Pre-order tranversion
+		public BSTNode next() {
+		
+			BSTNode elem = branch.pop();
+			BSTNode left = elem.getLeftChild();
+			BSTNode right = elem.getRightChild();
+			
+			if(right != null){
+				branch.push(right);
+			}
+			
+			if(left != null){
+				branch.push(left);
+			}
+			
+			
+			return elem;
+			/*
+			if (this.hasNext() == false) {
+				throw new NoSuchElementException();
+			}
+				return(this.current);
+			*/
+		}
+
+		public void remove() {
+				throw new UnsupportedOperationException();
+		}
+    }
+	
+	
+	
+	
 	
 	/**
 	 * Nodes in the search tree
