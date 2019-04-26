@@ -51,6 +51,12 @@ public class BinarySearchTree implements Iterable<BinarySearchTree.BSTNode> {
 				left = insert(left, node);
 			} else if (node.getCourseCode().compareTo(currentKey) > 0) { // left string "after" right string
 				right = insert(right, node);   //Fixed bug here. Prevoius code: right = insert(left, node);
+			} else if (node.getCourseCode().compareTo(currentKey) == 0) {
+				
+				root.courseCode = node.getCourseCode();
+				root.courseName = node.getCourseName();
+				root.credits = node.getCredits();
+				
 			}
 			
 			root.setChildren(left, right);
