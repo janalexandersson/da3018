@@ -6,27 +6,26 @@ public class TreeParser {
 	
 	}
 
-	public TreeNode parseTree( LinkedList<String> tokens ){
+	public TreeNode parse( LinkedList<String> tokens ){
 
 		String token = tokens.getFirst();
-
-		tokens.removeFirst(); //Remove the token.
-
-
+		
 		//Leaf
 		if(token != "("){
 			TreeNode leaf = new TreeNode();
-			leaf.token = token;
+			leaf.value = token;
 			tokens.removeFirst(); //Remove the leaf token.
 			return leaf;
 		}
 
 		else{ //We have read a '('
-			TreeNode left = parseTree( tokens );
+			tokens.removeFirst(); // remove the '('
+			
+			TreeNode left = parse( tokens );
 
 			tokens.removeFirst(); //Remove the ','
 
-			TreeNode right = parseTree( tokens );
+			TreeNode right = parse( tokens );
 
 			tokens.removeFirst(); //Remove the ')'
 
@@ -35,8 +34,6 @@ public class TreeParser {
 			parent.right = right;
 
 			return parent;
-		
-		
 		} 
 	}
 

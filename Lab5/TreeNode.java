@@ -1,6 +1,6 @@
 public class TreeNode {
 
-	public String token = null;
+	public String value = null;
 	public TreeNode left = null;
 	public TreeNode right = null;
 
@@ -10,7 +10,7 @@ public class TreeNode {
 
 
 	public int height(){
-		if(this.token != null){
+		if(this.value != null){
 			return 1;
 			
 		}else{
@@ -20,7 +20,8 @@ public class TreeNode {
 
 
 	public int n_leaves(){
-		if(this.token != null){
+		if(this.value != null){
+			System.out.println("Leaf: " + value);
 			return 1;
 			
 		}else{
