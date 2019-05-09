@@ -65,10 +65,19 @@ public class GraphDotIO{
 	}
 	
 	public static void main(String[] args){
+		
+		String file;
+		
+		if(args.length > 0){
+			file = args[0];
+		} else {
+			file = "testgraph.txt";
+		}
+		
 		GraphDotIO gdot = new GraphDotIO();
 		Graph g = null;
 		try{
-			g = gdot.readDot("testgraph.txt");
+			g = gdot.readDot(file);
 			}catch(IOException e){
 				e.printStackTrace();
 			}
