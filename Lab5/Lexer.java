@@ -95,6 +95,15 @@ public class Lexer {
 //  	s = "(apa,gnu[[[3462]]]);"; // Undefined behavior?
  		
  		
+ 		s = "(a, (b, (c, (d, e))));";
+ 		
+//  		s = "[Not a binary tree] (ali, bo, cia);";
+ 		
+//  		s = "[This is a tree with four leaves!] ((a,b), (c [third leaf],d))[The end];";
+ 		
+ 		
+ 		
+ 		
  		Lexer lexer = new Lexer(s);
  		
 //  		for(String t : lexer.tokens()) {

@@ -1,0 +1,5 @@
+asfasf aasfasf {
+a -- b;
+r --w;
+apa -- a;
+}

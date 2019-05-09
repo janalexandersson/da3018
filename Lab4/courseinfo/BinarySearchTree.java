@@ -225,6 +225,7 @@ public class BinarySearchTree implements Iterable<BinarySearchTree.BSTNode> {
 		//Besöker vänster först för att jag pushar höger först
 		//print left first
 		//Pre-order tranversion
+		
 		public BSTNode next() {
 		
 			BSTNode elem = branch.pop();
@@ -239,14 +240,7 @@ public class BinarySearchTree implements Iterable<BinarySearchTree.BSTNode> {
 				branch.push(left);
 			}
 			
-			
 			return elem;
-			/*
-			if (this.hasNext() == false) {
-				throw new NoSuchElementException();
-			}
-				return(this.current);
-			*/
 		}
 
 		public void remove() {
