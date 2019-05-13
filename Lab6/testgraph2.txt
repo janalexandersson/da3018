@@ -1,6 +1,6 @@
-asfasf aasfasf {
+disconnected {
 a -- b;
-r -- w;
-apa -- a;
+b -- c;
+c -- a;
 e -- d;
 }

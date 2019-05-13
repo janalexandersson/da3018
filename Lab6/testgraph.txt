@@ -1,5 +1,5 @@
-asfasf aasfasf {
+connected {
 a -- b;
-r -- w;
-apa -- a;
+b -- c;
+c -- a;
 }
