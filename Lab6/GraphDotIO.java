@@ -52,6 +52,7 @@ public class GraphDotIO{
 
 		for(String[] p : edges){
 			//v1 and v2 is now the edge as integers
+			//The code below gives index and pput a 1 iin the adjMatrix for that pair of indexes
 			int v1 = vertices.headSet(p[0]).size();
 			int v2 = vertices.headSet(p[1]).size();
 			mat[v1][v2] = 1;
@@ -83,6 +84,8 @@ public class GraphDotIO{
 			}
 			
 		g.printAdjMatrix();
+		//System.out.println(g.distance(0));
+		System.out.println(g.diameter());
 	}
 
 }

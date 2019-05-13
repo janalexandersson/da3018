@@ -59,16 +59,11 @@ public class Lexer {
 					result.add(":");
 					i++;
 					break;
-				case '[': //The comment case
-					i++;
-// 					while(str.charAt(i) != (']')) {
-// 						i++;
-// 					}
-					
-					for(;str.charAt(i) != (']');i++);
-					
-					i++;
-					break;
+// 				case '[': //The comment case
+// 					i++;					
+// 					for(;str.charAt(i) != (']');i++);
+// 					i++;
+// 					break;
 				default:
 					String substring = getLeaf(str, i);
 					i += substring.length();
